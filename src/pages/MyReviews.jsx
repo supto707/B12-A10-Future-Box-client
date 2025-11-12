@@ -45,15 +45,21 @@ const MyReviews = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h2 className="text-4xl font-bold text-center mb-8">My Reviews</h2>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 py-12">
+      <div className="container mx-auto px-4">
+      <div className="text-center mb-12">
+        <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">My Reviews</h2>
+        <p className="text-gray-600 text-lg">Manage all your food reviews</p>
+      </div>
       
       {reviews.length === 0 ? (
-        <p className="text-center text-gray-500 text-xl">You haven't added any reviews yet</p>
+        <div className="bg-white p-12 rounded-3xl shadow-xl text-center">
+          <p className="text-gray-500 text-xl">You haven't added any reviews yet</p>
+        </div>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
-            <thead className="bg-orange-500 text-white">
+        <div className="overflow-x-auto bg-white rounded-3xl shadow-2xl">
+          <table className="w-full">
+            <thead className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
               <tr>
                 <th className="px-6 py-4 text-left">Food Image</th>
                 <th className="px-6 py-4 text-left">Food Name</th>
@@ -72,11 +78,11 @@ const MyReviews = () => {
                   <td className="px-6 py-4">{review.restaurantName}</td>
                   <td className="px-6 py-4">{new Date(review.date).toLocaleDateString()}</td>
                   <td className="px-6 py-4">
-                    <div className="flex gap-2 justify-center">
-                      <Link to={`/edit-review/${review._id}`} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    <div className="flex gap-3 justify-center">
+                      <Link to={`/edit-review/${review._id}`} className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 font-semibold transition-all hover:scale-105">
                         Edit
                       </Link>
-                      <button onClick={() => setDeleteId(review._id)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                      <button onClick={() => setDeleteId(review._id)} className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 font-semibold transition-all hover:scale-105">
                         Delete
                       </button>
                     </div>
@@ -89,21 +95,22 @@ const MyReviews = () => {
       )}
 
       {deleteId && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-lg shadow-lg max-w-md">
-            <h3 className="text-2xl font-bold mb-4">Confirm Delete</h3>
-            <p className="mb-6">Are you sure you want to delete this review?</p>
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 backdrop-blur-sm">
+          <div className="bg-white p-10 rounded-3xl shadow-2xl max-w-md border-t-4 border-red-500 animate-fade-in">
+            <h3 className="text-3xl font-bold mb-4 text-gray-800">Confirm Delete</h3>
+            <p className="mb-8 text-gray-600 text-lg">Are you sure you want to delete this review? This action cannot be undone.</p>
             <div className="flex gap-4">
-              <button onClick={() => handleDelete(deleteId)} className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600">
+              <button onClick={() => handleDelete(deleteId)} className="flex-1 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-xl hover:shadow-xl font-bold transition-all hover:scale-105">
                 Confirm
               </button>
-              <button onClick={() => setDeleteId(null)} className="bg-gray-300 px-6 py-2 rounded hover:bg-gray-400">
+              <button onClick={() => setDeleteId(null)} className="flex-1 bg-gray-200 text-gray-700 px-6 py-3 rounded-xl hover:bg-gray-300 font-semibold transition-all hover:scale-105">
                 Cancel
               </button>
             </div>
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 };

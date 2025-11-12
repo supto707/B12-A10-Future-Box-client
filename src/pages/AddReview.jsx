@@ -34,9 +34,10 @@ const AddReview = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-        <h2 className="text-3xl font-bold mb-6">Add Review</h2>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 py-12">
+      <div className="container mx-auto px-4">
+      <div className="max-w-2xl mx-auto bg-white p-10 rounded-3xl shadow-2xl border-t-4 border-orange-500">
+        <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Add Review</h2>
         
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
@@ -100,10 +101,11 @@ const AddReview = () => {
             {errors.reviewText && <p className="text-red-500 text-sm mt-1">{errors.reviewText.message}</p>}
           </div>
 
-          <button type="submit" className="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 font-semibold">
+          <button type="submit" className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-4 rounded-xl hover:shadow-xl font-bold text-lg transition-all hover:scale-105">
             Submit Review
           </button>
         </form>
+      </div>
       </div>
     </div>
   );
